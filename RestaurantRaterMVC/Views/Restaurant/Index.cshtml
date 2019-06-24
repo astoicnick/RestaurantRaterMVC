@@ -1,7 +1,39 @@
-﻿
+﻿@model IEnumerable<RestaurantRaterMVC.Models.Restaurant>
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Restaurants";
 }
 
-<h2>Index</h2>
+<h2>Restaurants</h2>
+<p>
+    @Html.ActionLink("Rate a Restaurant", "Create");
+</p>
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Name)</th>
+        <th>@Html.DisplayNameFor(model => model.Rating)</th>
+        <th>@Html.DisplayNameFor(model => model.FoodType)</th>
+    </tr>
+    @foreach (var restaurant in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(Item => restaurant.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(Item => restaurant.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(Item => restaurant.FoodType)
+            </td>
+            <td>
+                @*Link Text, Action Name*@
+                @Html.ActionLink("Update", "Edit", new { id = restaurant.RestaurantID })
+                @Html.ActionLink("More Info", "Details", new { id = restaurant.RestaurantID })
+                @Html.ActionLink("Destory", "Delete", new { id = restaurant.RestaurantID })
+            </td>
+        </tr>
+    }
+</table>
 
