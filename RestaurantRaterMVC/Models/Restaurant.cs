@@ -10,11 +10,13 @@ namespace RestaurantRaterMVC.Models
     public class Restaurant
     {
         public int RestaurantID { get; set; }
-        public string Name { get; set; }
-        public double Rating { get; set; }
-        [Display(Name = "Cuisine")]
-        public string FoodType { get; set; }
 
+        [Required]
+        public string Name { get; set; }
+
+        [Display(Name = "Food Type")]
+        public string FoodType { get; set; }
+        public double Rating { get; set; }
     }
 
     public class RestaurantDbContext : DbContext
